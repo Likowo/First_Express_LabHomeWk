@@ -33,9 +33,9 @@ app.get('/greeting/:name', function(req, res) {
 
   // Magic 8 Ball route
   // Define a route called /magic
-// app.get('/magic', function(req, res) {
-//   res.send(<h1> This is the Magic 8 Ball! Are you ready??! </h1>);
-// });
+app.get('/magic', function(req, res) {
+  res.send('<h1> This is the Magic 8 Ball! Are you ready??!</h1>');
+});
 
 //
 app.get('/magic/:question', (req, res) =>{
