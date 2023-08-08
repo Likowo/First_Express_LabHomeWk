@@ -1,8 +1,9 @@
+
 const express = require("express");  // Gives file access to express
 
 const app = express(); // Creating an instance of express as app variable //This allows us to use express methods on our app object
 const PORT = 3001 ;
-
+const response = require("./models/response")
 //Setting up Midddleware( purpose: This gives access to views folder. First run the command; npm i express-react-views in the terminal : This dependency will auto fill package.json under dependencies )
 app.set("view engine", "jsx")
 app.engine("jsx",require("express-react-views").createEngine())
@@ -30,6 +31,17 @@ app.get('/greeting/:name', function(req, res) {
   });
   
 
+  // Magic 8 Ball route
+  // Define a route called /magic
+// app.get('/magic', function(req, res) {
+//   res.send(<h1> This is the Magic 8 Ball! Are you ready??! </h1>);
+// });
+
+//
+app.get('/magic/:question', (req, res) =>{
+  let randomResponse = response[Math.floor(Math.random() * response.length)]
+  res.send(`${req.params.question} <h1>${randomResponse}</h1>`)
+})
 
 
 
