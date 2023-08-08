@@ -7,7 +7,7 @@ const PORT = 3001 ;
 app.set("view engine", "jsx")
 app.engine("jsx",require("express-react-views").createEngine())
 
-//Define a "root" route directly on app // Mount routes
+//Define a "root" route directly on app called greetings // Mount routes
 app.get('/greeting', function(req, res) {
     res.send('<h1> Hello Li </h1>');
   });
@@ -16,6 +16,19 @@ app.get('/greeting', function(req, res) {
 app.get('/greeting/:name', function(req, res) {
     res.send(` woow! Hello ${req.params.name} , "It's so great to see you!"`);
   });
+
+  //Tip Calculator route and params
+    // Define a route called tip
+    app.get('/tip', function(req, res) {
+      res.send('<h1> Hello Li, your tip is </h1>');
+    });
+
+    // Give the tip route 2 params, /:total and /:tipPercentage
+  app.get('/tip/:total/:tipPercentage', function(req, res) {
+    let tip = req.params.total * (req.params.tipPercentage / 100)
+    res.send (`<h1> Hi Likowo, your tip is ${tip} dollars </h1>`)
+  });
+  
 
 
 
